@@ -1,0 +1,276 @@
+\documentclass[17pt]{beamer}
+%\usepackage{pgfpages} %to use multiple screens (projector and laptop)
+%\usepackage{hyperref}
+%showing the previous slide on the next screen
+%\setbeameroption{previous slide on second screen=left}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%HERE GOES THE PACKAGES YOU WILL BE USING
+%----------------------------------------------------------------------------------------------------------------------------------------
+%\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+%\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{color}
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+%\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+%\usepackage{hyperref}
+%\usepackage{graphicx}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{hyperref}
+%\hypersetup{
+% colorlinks=true,
+% citecolor=Violet,
+% linkcolor=Red,
+% urlcolor=Blue}
+%
+\usepackage{colortbl}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%GENERAL DOC SETTINGS
+%----------------------------------------------------------------------------------------------------------------------------------------
+% Margins
+%\topmargin=-0.45in
+%\evensidemargin=0in
+%\oddsidemargin=0in
+%\textwidth=6.5in
+%\textheight=9.0in
+%\headsep=0.25in
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%HIDING/ SHOWING NOTES ON SLIDES
+%----------------------------------------------------------------------------------------------------------------------------------------
+%\setbeameroption{show notes} %use this for practice
+\setbeameroption{hide notes} %use it for actual presentation without notes and only presentation
+%\setbeameroption{show only notes}
+%\setbeameroption{show notes on second screen=left} %to view presentation on laptop and projector_ Use for practising the presentation
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%SELECT PPT THEME HERE
+%----------------------------------------------------------------------------------------------------------------------------------------
+%\usetheme[hoptionsi]{PaloAlto} %Shows all the headings in at margin of all slides
+%\usetheme{Montpellier}
+%\usetheme{JuanLesPins}
+%\usetheme{Berkeley}
+%\usetheme{AnnArbor}
+%\useinnertheme{inmargin}
+%\usetheme{Antibes} %Shows tree at top of slides
+%\usetheme{CambridgeUS}
+%\usetheme{Madrid} % his favorite!
+%\usetheme{Boadilla} % Pretty neat, soft color.
+\usetheme{default}
+%\usetheme{Warsaw} %shows good tree structure on top
+%\usetheme{Bergen} % This template has nagivation on the left
+%\usetheme{Frankfurt} % Similar to the default (Standard theme DKS uses this)
+%with an extra region at the top.
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%GENERAL COLOR THEMES
+%----------------------------------------------------------------------------------------------------------------------------------------
+%\usecolortheme{}
+%\usecolortheme{beetle}
+%\usecolortheme{albatross}
+\usecolortheme{rose}
+%\usecolortheme{seahorse} % Simple and clean template
+
+%set color to title slide
+%\setbeamercolor{title}{fg=red!80!black,bg=red!20!white}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%MISCELLANEOUS
+%----------------------------------------------------------------------------------------------------------------------------------------
+%set whether the next items in the slide is to be transparent or invisible
+%\setbeamercovered{transparent}
+\setbeamercovered{invisible}
+%\setbeamercovered{highly dynamic}
+
+% page numbers and using Warsaw theme
+\setbeamertemplate{footline}[page number]
+
+%To remove the navigation symbols from the bottom of slides
+\setbeamertemplate{navigation symbols}{}
+
+% New command to change font size in some slides
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+
+% Define colors
+%\definecolor{Gray}{gray}{0.85}
+\definecolor{Gray}{gray}{0.85}
+%\definecolor{yellow}{gray}{0.85}
+\definecolor{LRed}{rgb}{1,.8,.8}
+\definecolor{MRed}{rgb}{1,.6,.6}
+\definecolor{HRed}{rgb}{1,.2,.2}
+\definecolor{Yellow}{rgb}{1,1,0}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------------------------------------------------------
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+%\definecolor{yellow}{rgb}{1.0,0.0,1.0} % This is the color used for comments
+\definecolor{Blue}{rgb}{0.0,0.0,1.0} % This is the color used for comments
+\definecolor{Rose}{rgb}{1.0,0.0,1.0} % This is the color used for comments
+\lstloadlanguages{Verilog} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=Verilog, % Use Perl in this example
+        frame=single, % Single frame around code
+        %frame=L, % No frame around code
+        %basicstyle=\small\ttfamily, % Use small true type font
+        basicstyle=\scriptsize\ttfamily, % Use small true type font
+        %basicstyle=\footnotesize\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=1, % 3 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        %numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=1 % Line numbers go in steps of 5
+}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%CREATE YOUOWN COMMAND
+%----------------------------------------------------------------------------------------------------------------------------------------
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+%\newcommand{\script}[2]{
+%\begin{itemize}
+%\item[]\lstinputlisting[caption=#2,label=#1]{#1.v}
+%\end{itemize}
+%}
+\newcommand{\script}[2]{
+\Fontvi
+\lstinputlisting[caption=#2,label=#1]{#1.v}
+}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%TITLE SLIDE
+%----------------------------------------------------------------------------------------------------------------------------------------
+\title[title]{Title}
+%\subtitle{A Tuitorial}
+\author{Your name}
+\institute
+{Course \\Institution}
+\date{}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%YOUR DOCUMENT BEGING FROM HERE
+%----------------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+
+%first slide/ frame
+\begin{frame}
+\titlepage
+\vfill
+\center IITB Innovation Labs
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline of my talk today}
+\begin{itemize}
+\item A slide
+\item Slide with code
+\item A slide has an image
+\item Introducing... The TABLE
+\item References
+\end{itemize}
+\end{frame}
+
+\section{Section 1}
+\begin{frame}
+\frametitle{A Slide}
+\begin{itemize}
+\item Text related to one of your references\footnote{Ou, Jen-Chieh; Saab, D.G.; Abraham, J.A., "HDL Program Slicing to Reduce Bounded Model Checking Search Overhead," Test Conference, 2006. ITC '06. IEEE International , vol., no., pp.1,7, Oct. 2006}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Slide with code}
+%\framesubtitle{HDL Slicing}
+%\Fontvi 
+\script{code_snippets/a_code}{A sample code}
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%INCLUDING PDF IMAGES
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Section 2}
+\begin{frame}
+\frametitle{A slide has an image}
+\includegraphics[width=\textwidth, height=\textwidth]{images/an_image.pdf}
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%DEFINE A TABLE
+%----------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Introducing... The TABLE}
+\begin{center}
+  \begin{tabular}{ | l | r | }
+    \hline
+    column1 & column2\\ \hline
+    %\cellcolor[gray]{0.8} Processor Type & BMC Time (S)\\ \hline
+    %\rowcolor{Yellow} Without bit-width reduction \footnote{Number of latches = 848} & 32.46 \\ \hline 
+    Content \footnote{Called me?} & More content \\ \hline 
+    More and more.. & content   \\
+    \hline
+  \end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{References}
+\begin{thebibliography}{1} % 100 is a random guess of the total number of %references
+\bibitem POu, Jen-Chieh; Saab, D.G.; Abraham, J.A., "Hi there I am Mr. IEEE paper," Test Conference, 2006. ITC '06. IEEE International , vol., no., pp.1,7, Oct. 2006
+\end{thebibliography}
+\end{frame}
+
+\begin{frame}
+\frametitle{References}
+\begin{thebibliography}{1} % 100 is a random guess of the total number of %references
+\bibitem PPrabhu, M.; Abraham, J.A., "I am paper2, you may replace me with the name of some paper," Test Conference (ITC), 2013 IEEE International , vol., no., pp.1,7, 6-13 Sept. 2013
+\end{thebibliography}
+\end{frame}
+
+\begin{frame}
+\center{Hope you enjoyed it}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%ADDING HYPERLINKS
+%----------------------------------------------------------------------------------------------------------------------------------------
+
+%\begin{flushright}
+%\href{mailto:vineeshvsjobs@gmail.com?subject=Bug report || Beamer template error & body=Hi,I found a bug in your Beamer template}
+%{\nolinkurl{Send an Owl}}
+%\end{flushright}
+
+\begin{flushleft}
+\href{mailto:vineeshvsjobs@gmail.com?subject=Bug report || Beamer template error & body=Hi,I found a bug in your Beamer template}{\includegraphics[scale=0.1]{images/send_an_owl.jpg}}
+\end{flushleft}
+
+%\begin{flushleft}
+%\href{http://www.iittutorials.com/tutorials/}{\nolinkurl{Website}}
+%\end{flushleft}
+
+\begin{flushright}
+\href{http://www.iittutorials.com/tutorials/}{\includegraphics[scale=0.1]{images/for_the_love_of_advertising.png}}
+\end{flushright}
+
+\end{frame}
+
+\end{document}
